@@ -12,16 +12,4 @@
     @yield('style')
 </head>
 
-<body>
-    <header>
-        @include('components.header')
-    </header>
-
-    <main>
-        <div>
-            @yield('content')
-        </div>
-    </main>
-</body>
-
 </html>
