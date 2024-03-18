@@ -19,4 +19,21 @@ class ComicController extends Controller
     {
         return view('components.comicsView.create');
     }
+
+    public function store(Request $request)
+    {
+        $formData = $request->all();
+
+        $newComic = new Comic();
+        $newPasta->fill($formData);
+        $newPasta->save();
+
+        return redirect()->route('comics.show', ['comic' => $newComic->id]);
+    }
+
+    public function show(Comic $comic)
+    {
+
+        return view('pages.comicsView.show', compact('comic'));
+    }
 }
