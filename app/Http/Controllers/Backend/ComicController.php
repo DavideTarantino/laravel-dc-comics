@@ -36,4 +36,32 @@ class ComicController extends Controller
             $comic = Comic::findOrFail($id);
             return view('pages.comics.show', compact('comic'));
         }
+
+        public function edit(string $id)
+        {
+            $comic = Comic::findOrFail($id);
+
+            return view('pages.comics.edit', compact('comic'));
+        }
+
+        public function update(Request $request, string $id)
+        {
+            $form_data = $request->all();
+
+            $pasta = Comic::find($id);
+
+            $pasta->update($form_data);
+
+            return redirect()->route('comics.index');
+
+        }
+
+        public function destroy(string $id)
+        {
+            $comic = Comic::find($id);
+
+            $comic->delete();
+            
+            return redirect()->route('comics.index');
+        }
 }

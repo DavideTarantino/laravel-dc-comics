@@ -15,9 +15,24 @@
                 <p><strong>Series: </strong>{{$item->series}}</p>
                 <p><strong>Sale Date: </strong>{{$item->sale_date}}</p>
                 <p><strong>Type: </strong>{{$item->type}}</p>
+                <a id="pulsante-modifica" href="{{ route('comics.edit', $item->id) }}">
+                    Modifica
+                </a>
+                <form 
+                    action="{{route('comics.destroy', $item->id) }}" method="POST"
+                >
+                    @csrf
+                    @method('DELETE')
+
+                    <button
+                        type="submit"
+                    >
+                        Cancella
+                    </button>
+                </form>
             </div> 
             @endforeach
         </div>
-        <a href="{{ route('comics.create') }}">Crea fumetto</a>
+        <a id="pulsante-creazione" href="{{ route('comics.create') }}">Aggiungi Fumetto</a>
     </main>
 @endsection
