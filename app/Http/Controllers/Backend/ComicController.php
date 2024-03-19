@@ -10,30 +10,30 @@ class ComicController extends Controller
 {
     public function index()
     {
-        $comics = Comic::All();
-
-        return view('components.comicsView.index', compact('comics'));
+        $comics = Comic::all(); 
+        
+        return view('pages.comics.index', compact('comics'));
     }
 
-    public function create()
-    {
-        return view('components.comicsView.create');
-    }
+     public function create()
+     {
+         return view('pages.comics.create');
+     }
 
-    public function store(Request $request)
-    {
-        $formData = $request->all();
+     public function store(Request $request)
+     {
+         $form_data = $request->all();
 
-        $newComic = new Comic();
-        $newPasta->fill($formData);
-        $newPasta->save();
+         $new_comic = new Comic();
+         $new_comic->fill($form_data);
+         $new_comic->save();
 
-        return redirect()->route('comics.show', ['comic' => $newComic->id]);
-    }
+         return redirect()->route('comics.show', ['comic' => $new_comic->id]);
+     }
 
-    public function show(Comic $comic)
-    {
-
-        return view('pages.comicsView.show', compact('comic'));
-    }
+      public function show(string $id)
+        { 
+            $comic = Comic::findOrFail($id);
+            return view('pages.comics.show', compact('comic'));
+        }
 }
