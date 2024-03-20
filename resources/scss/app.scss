@@ -11,6 +11,14 @@ html {
     font-family: sans-serif;
 }
 
+.errore{
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
 #index-main{
     display: flex;
     flex-direction: column;
@@ -67,14 +75,14 @@ html {
     }
 }
 
-#create-main{
+.create-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: antiquewhite;
-    height: 100vh;
+    min-height: 100vh;
 
     div{
         padding: 30px;

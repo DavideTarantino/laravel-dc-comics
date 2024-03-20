@@ -3,8 +3,18 @@
 @section('title', 'Dc-Comics | Modifica')
 
 @section('main')
-<main id="create-main">
+<main class="create-main">
     <h1>Modifica un'inserzione</h1>
+
+    @if ($errors->any())
+        <div class="errore">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ route('comics.update', $comic->id) }}" method='POST'>
         @csrf

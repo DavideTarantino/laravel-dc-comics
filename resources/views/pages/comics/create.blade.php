@@ -3,8 +3,19 @@
 @section('title', 'Dc-Comics | Crea')
 
 @section('main')
-<main id="create-main">
+<main class="create-main">
     <h1>Crea una nuova inserzione</h1>
+
+    @if ($errors->any())
+        <div class="errore">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('comics.store') }}" method='POST'>
         @csrf
 
